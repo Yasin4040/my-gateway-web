@@ -1,7 +1,7 @@
-import ApiRequest from "@/services/ApiRequest"
+import ApiRequest from '@/services/ApiRequest';
 
 export async function login(params, options) {
-  return ApiRequest('/oauth/token', {
+  return ApiRequest('/auth/emp/oauth/token', {
     method: 'POST',
     params: { ...params },
     ...(options || {}),

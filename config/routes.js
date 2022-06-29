@@ -29,6 +29,18 @@ export default [
     component: './Form',
   },
   {
+    path: '/route',
+    name: '路由配置管理',
+    icon: 'smile',
+    component: './Route',
+  },
+  {
+    path: '/whiteList',
+    name: '白名单管理',
+    icon: 'smile',
+    component: './WhiteList',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },

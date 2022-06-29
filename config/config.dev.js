@@ -12,8 +12,9 @@ export default defineConfig({
     babelOptions: {},
   },
   define: {
-    BASE_API: 'http://localhost:8182',
-    CLIENT_ID: 'client',
-    CLIENT_SECRET: '123456'
-  }
+    // BASE_API: 'http://localhost:8182',
+    BASE_API: 'http://192.168.31.99:11001/',
+    CLIENT_ID: 'client4',
+    CLIENT_SECRET: '123456',
+  },
 });
