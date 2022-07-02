@@ -48,37 +48,51 @@ const editButton = {
   },
 };
 
-// const viewButton = {
-//   "label": "查看表",
-//   "type": "button",
-//   "actionType": "dialog",
-//   "level": "link",
-//   "dialog": {
-//     "title": "查看详情",
-//     "body": {
-//       "type": "crud",
-//       "api": {
-//         "method": "get",
-//         "url": "/api/databaseConfig/tableList?id=$id",
-//         "responseData": {
-//           "total": "total",
-//           "items": "${records}"
-//         }
-//       },
-//       "syncLocation": false,
-//       "columns": [
-//         {
-//           "name": "name",
-//           "label": "表名"
-//         },
-//         {
-//           "name": "comment",
-//           "label": "注释"
-//         }
-//       ]
-//     }
-//   }
-// };
+const getInterfaceButton = {
+  label: '获取服务接口',
+  type: 'button',
+  actionType: 'dialog',
+  // "level": "link",
+  dialog: {
+    size: 'lg',
+    title: '获取服务接口',
+    body: {
+      type: 'crud',
+      syncLocation: false,
+      perPage: 20,
+      pageField: 'pageNum',
+      perPageField: 'pageSize',
+      keepItemSelectionOnPageChange: true,
+      footerToolbar: ['switch-per-page', 'pagination'],
+      api: {
+        method: 'get',
+        url: '/gateway/interface/selectServiceInterfacePageVo?id=${id}&serviceId=${serviceId}&pageNum=${pageNum}&pageSize=${pageSize}',
+        responseData: {
+          total: '${total}',
+          items: '${records}',
+        },
+      },
+      columns: [
+        {
+          name: 'path',
+          label: '请求路径',
+        },
+        {
+          name: 'summary',
+          label: '请求名称',
+        },
+        {
+          name: 'type',
+          label: 'http类型',
+        },
+        {
+          name: 'tag',
+          label: '标志分组',
+        },
+      ],
+    },
+  },
+};
 
 const deleteButton = {
   type: 'button',
@@ -92,11 +106,10 @@ const deleteButton = {
     url: '/gateway/route/deleteRoute',
     dataType: 'form',
     data: {
-      id: '${serviceId}',
+      id: '${id}',
     },
   },
 };
-
 // const exportButton = {
 //   "type": "button",
 //   "label": "导出数据库文档",
@@ -175,6 +188,8 @@ const tableList = [
     label: '操作',
     buttons: [
       editButton,
+
+      getInterfaceButton,
       // viewButton,
       // exportButton,
       deleteButton,
