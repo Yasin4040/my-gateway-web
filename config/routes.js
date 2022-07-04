@@ -41,6 +41,12 @@ export default [
     component: './WhiteList',
   },
   {
+    path: '/ipBlack',
+    name: 'Ip黑名单管理',
+    icon: 'smile',
+    component: './IpBlack',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },

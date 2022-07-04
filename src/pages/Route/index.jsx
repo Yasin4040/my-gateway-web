@@ -59,14 +59,10 @@ const getInterfaceButton = {
     body: {
       type: 'crud',
       syncLocation: false,
-      perPage: 20,
-      pageField: 'pageNum',
-      perPageField: 'pageSize',
-      keepItemSelectionOnPageChange: true,
-      footerToolbar: ['switch-per-page', 'pagination'],
+      loadDataOnce: true,
       api: {
         method: 'get',
-        url: '/gateway/interface/selectServiceInterfacePageVo?id=${id}&serviceId=${serviceId}&pageNum=${pageNum}&pageSize=${pageSize}',
+        url: '/gateway/route/getAllInterface?serviceUrl=${uri}',
         responseData: {
           total: '${total}',
           items: '${records}',
@@ -89,11 +85,34 @@ const getInterfaceButton = {
           name: 'tag',
           label: '标志分组',
         },
+        {
+          type: 'operation',
+          label: '操作',
+          buttons: [
+            {
+              type: 'button',
+              label: '添加到白名单',
+              actionType: 'ajax',
+              level: 'link',
+              className: 'text-danger',
+              confirmText: '确定要添加？',
+              api: {
+                method: 'post',
+                url: '/gateway/permit/addWhiteList',
+                data: {
+                  path: '${path}',
+                  description: '${summary}',
+                },
+              },
+            },
+          ],
+        },
       ],
     },
   },
 };
 
+const addWhite = {};
 const deleteButton = {
   type: 'button',
   label: '删除',
@@ -110,6 +129,7 @@ const deleteButton = {
     },
   },
 };
+
 // const exportButton = {
 //   "type": "button",
 //   "label": "导出数据库文档",
@@ -261,7 +281,7 @@ const syncButton = {
 };
 const queryButton = {
   title: '查询条件',
-  columnCount: 3,
+  columnCount: 1,
   type: 'form',
   mode: 'horizontal',
   body: [
@@ -289,6 +309,17 @@ const queryButton = {
       label: '备注信息',
       name: 'remarks',
       type: 'input-text',
+    },
+    {
+      type: 'submit',
+      label: '搜索',
+      level: 'primary',
+    },
+    {
+      type: 'operation',
+      label: '操作',
+      level: 'primary',
+      buttons: [addButton],
     },
   ],
 };

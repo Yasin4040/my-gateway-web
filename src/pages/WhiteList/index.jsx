@@ -11,7 +11,7 @@ const editButton = {
     title: '编辑',
     body: {
       type: 'form',
-      api: '/api/databaseConfig/edit',
+      api: '/gateway/permit/editWhiteList',
       body: [
         {
           label: '序列id',
