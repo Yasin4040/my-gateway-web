@@ -36,7 +36,12 @@ const tableList = [
     buttons: [deleteButton],
   },
 ];
-
+const syncButton = {
+  label: '刷新白名单',
+  type: 'button',
+  actionType: 'ajax',
+  api: '/gateway/ipBlack/refreshIpList',
+};
 const addButton = {
   label: '新增',
   type: 'button',
@@ -87,7 +92,7 @@ export default class List extends React.Component {
             },
             loadDataOnce: true,
             columns: tableList,
-            headerToolbar: [addButton, 'bulkActions'],
+            headerToolbar: [addButton, syncButton, 'bulkActions'],
           },
         })}
       </div>

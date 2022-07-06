@@ -170,6 +170,11 @@ const queryButton = {
       name: 'description',
       type: 'input-text',
     },
+    {
+      label: '搜索',
+      level: 'primary',
+      type: 'submit',
+    },
   ],
 };
 
