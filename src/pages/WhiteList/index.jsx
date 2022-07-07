@@ -33,6 +33,7 @@ const editButton = {
   },
 };
 const syncButton = {
+  size: 'md',
   label: '刷新白名单',
   type: 'button',
   actionType: 'ajax',
@@ -120,6 +121,7 @@ const addButton = {
   type: 'button',
   actionType: 'dialog',
   level: 'primary',
+  size: 'md',
   dialog: {
     title: '新增',
     body: {

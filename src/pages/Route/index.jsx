@@ -51,21 +51,28 @@ const editButton = {
 const getInterfaceButton = {
   label: '获取服务接口',
   type: 'button',
-  actionType: 'dialog',
-  // "level": "link",
-  dialog: {
+  actionType: 'drawer',
+  level: 'link',
+  drawer: {
+    closeOnEsc: true,
+    position: 'right',
     size: 'lg',
     title: '获取服务接口',
     body: {
       type: 'crud',
       syncLocation: false,
       loadDataOnce: true,
+      // source: "${rows | filter:path:match:path}",
       api: {
         method: 'get',
         url: '/gateway/route/getAllInterface?serviceUrl=${uri}',
         responseData: {
           total: '${total}',
           items: '${records}',
+        },
+        data: {
+          path: '${path}',
+          summary: '${summary}',
         },
       },
       columns: [
@@ -108,11 +115,30 @@ const getInterfaceButton = {
           ],
         },
       ],
+      filter: {
+        title: '条件搜索',
+        body: [
+          {
+            label: '请求路径',
+            name: 'path',
+            type: 'input-text',
+          },
+          {
+            label: '请求名称',
+            name: 'summary',
+            type: 'input-text',
+          },
+          {
+            type: 'submit',
+            label: '搜索',
+            level: 'primary',
+          },
+        ],
+      },
     },
   },
 };
 
-const addWhite = {};
 const deleteButton = {
   type: 'button',
   label: '删除',
@@ -129,22 +155,6 @@ const deleteButton = {
     },
   },
 };
-
-// const exportButton = {
-//   "type": "button",
-//   "label": "导出数据库文档",
-//   "actionType": "download",
-//   "level": "link",
-//   "api": {
-//     "method": "get",
-//     "url": "/api/databaseConfig/exportDatabase",
-//     "dataType": "form",
-//     "responseType":"blob",
-//     "data": {
-//       "id":"${id}"
-//     }
-//   }
-// };
 
 const tableList = [
   {
@@ -221,6 +231,7 @@ const addButton = {
   label: '新增',
   type: 'button',
   actionType: 'dialog',
+  size: 'md',
   level: 'primary',
   dialog: {
     title: '新增',
@@ -281,7 +292,7 @@ const syncButton = {
 };
 const queryButton = {
   title: '查询条件',
-  columnCount: 1,
+  columnCount: 2,
   type: 'form',
   mode: 'horizontal',
   body: [
@@ -314,12 +325,6 @@ const queryButton = {
       type: 'submit',
       label: '搜索',
       level: 'primary',
-    },
-    {
-      type: 'operation',
-      label: '操作',
-      level: 'primary',
-      buttons: [addButton],
     },
   ],
 };

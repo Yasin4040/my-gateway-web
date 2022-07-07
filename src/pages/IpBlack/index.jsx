@@ -42,11 +42,35 @@ const syncButton = {
   actionType: 'ajax',
   api: '/gateway/ipBlack/refreshIpList',
 };
+const queryButton = {
+  title: '查询条件',
+  columnCount: 1,
+  type: 'form',
+  mode: 'horizontal',
+  body: [
+    {
+      label: 'ip地址',
+      name: 'ip',
+      type: 'input-text',
+    },
+    {
+      label: '备注',
+      name: 'remark',
+      type: 'input-text',
+    },
+    {
+      type: 'submit',
+      label: '搜索',
+      level: 'primary',
+    },
+  ],
+};
 const addButton = {
   label: '新增',
   type: 'button',
   actionType: 'dialog',
   level: 'primary',
+  size: 'sm',
   dialog: {
     title: '新增',
     body: {
@@ -93,6 +117,7 @@ export default class List extends React.Component {
             loadDataOnce: true,
             columns: tableList,
             headerToolbar: [addButton, syncButton, 'bulkActions'],
+            filter: queryButton,
           },
         })}
       </div>

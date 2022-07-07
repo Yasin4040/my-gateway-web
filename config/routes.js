@@ -5,30 +5,6 @@ export default [
     layout: false,
   },
   {
-    path: '/welcome',
-    name: 'welcome',
-    icon: 'smile',
-    component: './Welcome',
-  },
-  {
-    path: '/database',
-    name: '数据库配置管理',
-    icon: 'smile',
-    component: './Database',
-  },
-  {
-    path: '/project',
-    name: '项目配置管理',
-    icon: 'smile',
-    component: './Project',
-  },
-  {
-    path: '/form',
-    name: '表单配置管理',
-    icon: 'smile',
-    component: './Form',
-  },
-  {
     path: '/route',
     name: '路由配置管理',
     icon: 'smile',
@@ -48,7 +24,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/welcome',
+    redirect: '/route',
   },
   {
     component: './404',
